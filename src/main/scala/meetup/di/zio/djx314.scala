@@ -9,8 +9,6 @@ object djx314 extends App {
 
   override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] = {
 
-
-
     val io = for {
       fiber <- CakeShop.opening.fork
       cake <- CakeShop.甜在心蛋糕()
@@ -31,14 +29,4 @@ object djx314 extends App {
   val ovenLayer = ZLayer.succeed(new Oven)
   val tools = pipingTipLayer ++ turntableLayer ++ mixerLayer ++ ovenLayer
 
-
-  def printNth[R, E, A](n: Int)(io: ZIO[R, E, A]): ZIO[R, E, A] = {
-    Ref.make(n).flatMap { ref =>
-      def loop(): ZIO[R, E, A] = ref.get.flatMap { i =>
-        if (i <= 1) io
-        else io *> ref.update(_ - 1) *> loop()
-      }
-      loop()
-    }
-  }
 }
