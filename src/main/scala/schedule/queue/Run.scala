@@ -5,17 +5,16 @@ import zio.duration.durationInt
 import zio.logging.Logging
 import zio._
 
-
 object Run extends scala.App {
 
   val logger = Logging.console(rootLoggerName = Some(this.getClass.getName))
   val io = for {
     _ <- Logging.info("start")
     fetch = for {
-      _ <- Logging.info("fetching")
+      _    <- Logging.info("fetching")
       head <- ZQueue.head[Any, Nothing, Int]().retry(Schedule.spaced(100.milliseconds))
-      res <- head
-      _ <- Logging.info("fetch" + res.toString)
+      res  <- head
+      _    <- Logging.info("fetch" + res.toString)
     } yield ()
 
     _ <- fetch.forever
@@ -38,10 +37,14 @@ object ZQueue {
 
   def offer[R, E, A](io: ZIO[R, E, A])(implicit ev0: Tag[R], ev1: Tag[E], ev2: Tag[A]): ZIO[Has[ZQueue[R, E, A]], Throwable, Unit] = for {
     queue <- ZIO.service[ZQueue[R, E, A]]
-    _ <- ZIO.effect(queue.underling += io)
+    _     <- ZIO.effect(queue.underling += io)
   } yield ()
 
-  def head[R, E, A]()(implicit ev0: Tag[R], ev1: Tag[E], ev2: Tag[A]): ZIO[Blocking with Has[ZQueue[R, E, A]], Option[Nothing], ZIO[R, E, A]] = {
+  def head[R, E, A]()(implicit
+    ev0: Tag[R],
+    ev1: Tag[E],
+    ev2: Tag[A]
+  ): ZIO[Blocking with Has[ZQueue[R, E, A]], Option[Nothing], ZIO[R, E, A]] = {
     val io = for {
       queue <- ZIO.service[ZQueue[R, E, A]]
       value <- ZIO.effect { queue.underling.dequeue() }

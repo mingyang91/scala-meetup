@@ -24,11 +24,10 @@ object CakeShop {
 
   def 甜在心蛋糕(): ZIO[Logging with Clock with Has[PipingTip] with Has[Turntable] with Has[Mixer] with Has[Oven], Nothing, String] = {
     for {
-      base <- Baker.makeCakeBase()
+      base      <- Baker.makeCakeBase()
       decorated <- Decorator.decorating(base)
     } yield s"被 $decorated 装饰的 甜在心 $base"
   }
-
 
   ///
   /// 2002 年新增菜品
@@ -36,7 +35,7 @@ object CakeShop {
 
   def 慕斯(): ZIO[Logging with Clock with Has[Oven] with Has[Mixer], Nothing, String] = {
     for {
-      base <- Baker.makeCakeBase()
+      base    <- Baker.makeCakeBase()
       covered <- CandyMaker.maskChocolate(base)
     } yield s"$covered$base"
   }
@@ -53,18 +52,17 @@ object CakeShop {
 
   def 水果拼盘蛋糕(): ZIO[Logging with Clock with Has[Oven] with Has[Mixer], Nothing, String] = {
     for {
-      base <- Baker.makeCakeBase()
+      base    <- Baker.makeCakeBase()
       covered <- CandyMaker.maskFruit(base)
     } yield s"$covered$base"
   }
-
 
   ///
   /// 2015 年
   ///
   def 小龙虾蛋糕(): ZIO[Logging with Clock with Has[Oven] with Has[Mixer], Nothing, String] = {
     for {
-      base <- Baker.makeCakeBase()
+      base     <- Baker.makeCakeBase()
       toppings <- SichuanChef.cooking("小龙虾")
     } yield toppings + base
   }
@@ -75,7 +73,7 @@ object CakeShop {
 
   def 臭豆腐蛋糕(): ZIO[Logging with Clock with Has[Oven] with Has[Mixer], Nothing, String] = {
     for {
-      base <- Baker.makeCakeBase()
+      base     <- Baker.makeCakeBase()
       toppings <- HunanChef.cooking("臭豆腐")
     } yield toppings + base
   }

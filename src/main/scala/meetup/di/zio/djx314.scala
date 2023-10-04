@@ -11,22 +11,19 @@ object djx314 extends App {
 
     val io = for {
       fiber <- CakeShop.opening.fork
-      cake <- CakeShop.甜在心蛋糕()
-      _ <- Logging.info(cake)
-      _ <- fiber.await
+      cake  <- CakeShop.甜在心蛋糕()
+      _     <- Logging.info(cake)
+      _     <- fiber.await
     } yield cake
 
-    io
-      .provideSomeLayer[zio.ZEnv](logger ++ tools)
-      .exitCode
+    io.provideSomeLayer[zio.ZEnv](logger ++ tools).exitCode
   }
 
-
-  val logger = Logging.console(rootLoggerName = Some(this.getClass.getName))
+  val logger         = Logging.console(rootLoggerName = Some(this.getClass.getName))
   val pipingTipLayer = ZLayer.succeed(new PipingTip)
   val turntableLayer = ZLayer.succeed(new Turntable)
-  val mixerLayer = ZLayer.succeed(new Mixer)
-  val ovenLayer = ZLayer.succeed(new Oven)
-  val tools = pipingTipLayer ++ turntableLayer ++ mixerLayer ++ ovenLayer
+  val mixerLayer     = ZLayer.succeed(new Mixer)
+  val ovenLayer      = ZLayer.succeed(new Oven)
+  val tools          = pipingTipLayer ++ turntableLayer ++ mixerLayer ++ ovenLayer
 
 }

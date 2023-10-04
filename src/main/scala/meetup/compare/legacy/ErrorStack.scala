@@ -18,9 +18,9 @@ object ErrorStack extends App with Demo {
   def div0(v: Int): Future[Int] = Future { v / 0 }
 
   val f = for {
-    a1 <- plus8(1)
-    a2 <- mul5(a1)
-    a3 <- pow3(a2)
+    a1  <- plus8(1)
+    a2  <- mul5(a1)
+    a3  <- pow3(a2)
     res <- div0(a3)
   } yield res
 

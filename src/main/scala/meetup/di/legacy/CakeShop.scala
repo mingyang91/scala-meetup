@@ -6,18 +6,20 @@ import org.slf4j.LoggerFactory
 
 import scala.concurrent.Future
 
-class CakeShop(baker: Baker,
-               decorator: Decorator,
-               candyMaker: CandyMaker,
-               scChef: SichuanChef,
-               hnChef: HunanChef,
-               cashier: Cashier,
-               waiter: Waiter,
-               washer: Washer,
-               logistic: Logistic,
-               security: Security,
-               accountant: Accountant,
-               manager: Manager) extends Demo {
+class CakeShop(
+  baker: Baker,
+  decorator: Decorator,
+  candyMaker: CandyMaker,
+  scChef: SichuanChef,
+  hnChef: HunanChef,
+  cashier: Cashier,
+  waiter: Waiter,
+  washer: Washer,
+  logistic: Logistic,
+  security: Security,
+  accountant: Accountant,
+  manager: Manager
+) extends Demo {
 
   val logger = LoggerFactory.getLogger(this.getClass)
 
@@ -35,11 +37,10 @@ class CakeShop(baker: Baker,
 
   def 甜在心蛋糕(): Future[String] = {
     for {
-      base <- baker.makeCakeBase()
+      base      <- baker.makeCakeBase()
       decorated <- decorator.decorating(base)
     } yield s"$decorated 甜在心 $base"
   }
-
 
   ///
   /// 2002 年新增菜品
@@ -47,7 +48,7 @@ class CakeShop(baker: Baker,
 
   def 慕斯(): Future[String] = {
     for {
-      base <- baker.makeCakeBase()
+      base    <- baker.makeCakeBase()
       covered <- candyMaker.maskChocolate(base)
     } yield s"$covered$base"
   }
@@ -64,18 +65,17 @@ class CakeShop(baker: Baker,
 
   def 水果拼盘蛋糕() = {
     for {
-      base <- baker.makeCakeBase()
+      base    <- baker.makeCakeBase()
       covered <- candyMaker.maskFruit(base)
     } yield s"$covered$base"
   }
 
-
-  /// 
+  ///
   /// 2015 年
-  /// 
+  ///
   def 小龙虾蛋糕() = {
     for {
-      base <- baker.makeCakeBase()
+      base     <- baker.makeCakeBase()
       toppings <- scChef.cooking("小龙虾")
     } yield toppings + base
   }
@@ -86,7 +86,7 @@ class CakeShop(baker: Baker,
 
   def 臭豆腐蛋糕() = {
     for {
-      base <- baker.makeCakeBase()
+      base     <- baker.makeCakeBase()
       toppings <- hnChef.cooking("臭豆腐")
     } yield toppings + base
   }

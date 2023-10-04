@@ -8,7 +8,7 @@ import scala.concurrent.{ExecutionContextExecutor, Future}
 
 trait Demo {
 
-  implicit val system: ActorSystem = Demo.system
+  implicit val system: ActorSystem          = Demo.system
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   def delay(duration: FiniteDuration = 1.seconds): Future[Unit] = after(duration, system.scheduler)(Future.unit)
