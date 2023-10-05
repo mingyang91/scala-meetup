@@ -25,3 +25,7 @@ class Oven extends Demo {
     } yield logger.info("烘烤完成")
   }
 }
+
+object Oven {
+  def build: Oven = new Oven
+}

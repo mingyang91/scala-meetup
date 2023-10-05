@@ -9,3 +9,7 @@ class Logistic {
   def supplement() = logger.info("后勤每天补充食材")
 
 }
+
+object Logistic {
+  def build: Logistic = new Logistic
+}

@@ -18,36 +18,23 @@ import meetup.di.simple.tools.{Mixer, Oven, PipingTip, Turntable}
 import meetup.di.simple.utils.Demo
 
 object djx314 extends App with Demo {
-  val mixer      = new Mixer()
-  val oven       = new Oven()
-  val pipingTip  = new PipingTip()
-  val turntable  = new Turntable()
-  val baker      = new Baker(oven, mixer)
-  val decorator  = new Decorator(mixer, pipingTip, turntable)
-  val candyMaker = new CandyMaker
-  val scChef     = new SichuanChef
-  val hnChef     = new HunanChef
-  val cashier    = new Cashier
-  val waiter     = new Waiter
-  val washer     = new Washer
-  val logistic   = new Logistic
-  val security   = new Security
-  val accountant = new Accountant
-  val manager    = new Manager
-  val cs = new CakeShop(
-    baker,
-    decorator,
-    candyMaker,
-    scChef,
-    hnChef,
-    cashier,
-    waiter,
-    washer,
-    logistic,
-    security,
-    accountant,
-    manager
-  )
+  implicit val mixer: Mixer           = Mixer.build
+  implicit val oven: Oven             = Oven.build
+  implicit val pipingTip: PipingTip   = PipingTip.build
+  implicit val turntable: Turntable   = Turntable.build
+  implicit val baker: Baker           = Baker.build
+  implicit val decorator: Decorator   = Decorator.build
+  implicit val candyMaker: CandyMaker = CandyMaker.build
+  implicit val scChef: SichuanChef    = SichuanChef.build
+  implicit val hnChef: HunanChef      = HunanChef.build
+  implicit val cashier: Cashier       = Cashier.build
+  implicit val waiter: Waiter         = Waiter.build
+  implicit val washer: Washer         = Washer.build
+  implicit val logistic: Logistic     = Logistic.build
+  implicit val security: Security     = Security.build
+  implicit val accountant: Accountant = Accountant.build
+  implicit val manager: Manager       = Manager.build
+  val cs: CakeShop                    = CakeShop.build
 
   cs.甜在心蛋糕().onComplete(println)
 

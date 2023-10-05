@@ -8,3 +8,7 @@ class Washer {
 
   def washing() = logger.info("刷碗工一直在刷碗")
 }
+
+object Washer {
+  def build: Washer = new Washer
+}

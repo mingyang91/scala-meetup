@@ -21,3 +21,7 @@ class Baker(oven: Oven, mixer: Mixer) extends Demo {
   }
 
 }
+
+object Baker {
+  def build(implicit oven: Oven, mixer: Mixer): Baker = new Baker(implicitly, implicitly)
+}

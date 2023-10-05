@@ -8,3 +8,7 @@ class Waiter {
 
   def onCall() = logger.info("服务员等待客户呼唤")
 }
+
+object Waiter {
+  def build: Waiter = new Waiter
+}

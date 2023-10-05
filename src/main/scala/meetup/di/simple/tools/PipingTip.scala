@@ -16,3 +16,7 @@ class PipingTip extends Demo {
     delay().map(_ => logger.info(s"做造型 $name"))
   }
 }
+
+object PipingTip {
+  def build: PipingTip = new PipingTip
+}

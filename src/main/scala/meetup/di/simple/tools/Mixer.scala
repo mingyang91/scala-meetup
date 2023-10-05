@@ -26,3 +26,7 @@ class Mixer extends Demo {
   }
 
 }
+
+object Mixer {
+  def build: Mixer = new Mixer
+}

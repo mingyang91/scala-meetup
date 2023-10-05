@@ -13,3 +13,7 @@ class Turntable extends Demo {
     delay().map(_ => logger.info(s"$cake 转起来"))
   }
 }
+
+object Turntable {
+  def build: Turntable = new Turntable
+}

@@ -8,3 +8,7 @@ class Manager {
 
   def scheduling() = logger.info("店长在协调人手")
 }
+
+object Manager {
+  def build: Manager = new Manager
+}

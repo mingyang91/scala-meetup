@@ -89,3 +89,4 @@ libraryDependencies ++= Seq(
 libraryDependencies += "org.openjdk.jmh" % "jmh-generator-annprocess" % "1.23"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
+scalafmtOnCompile             := true

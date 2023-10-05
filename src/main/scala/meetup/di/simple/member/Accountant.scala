@@ -8,3 +8,7 @@ class Accountant {
 
   def bookkeeping() = logger.info("财务在记账")
 }
+
+object Accountant {
+  def build: Accountant = new Accountant
+}

@@ -8,3 +8,7 @@ class Security {
 
   def patrol() = logger.info("保安在巡逻")
 }
+
+object Security {
+  def build: Security = new Security
+}

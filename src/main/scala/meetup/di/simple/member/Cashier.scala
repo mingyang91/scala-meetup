@@ -10,3 +10,7 @@ class Cashier extends Demo {
   def standby() = logger.info("收银员等待顾客结账")
 
 }
+
+object Cashier {
+  def build: Cashier = new Cashier
+}

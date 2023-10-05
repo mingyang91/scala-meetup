@@ -6,3 +6,7 @@ class SichuanChef {
 
   def cooking(name: String): Future[Unit] = ???
 }
+
+object SichuanChef {
+  def build: SichuanChef = new SichuanChef
+}

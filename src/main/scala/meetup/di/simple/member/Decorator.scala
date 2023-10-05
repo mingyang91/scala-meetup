@@ -14,3 +14,8 @@ class Decorator(mixer: Mixer, pipingTip: PipingTip, turntable: Turntable) extend
     } yield "漂亮花❀花"
   }
 }
+
+object Decorator {
+  def build(implicit mixer: Mixer, pipingTip: PipingTip, turntable: Turntable): Decorator =
+    new Decorator(implicitly, implicitly, implicitly)
+}

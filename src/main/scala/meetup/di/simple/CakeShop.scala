@@ -95,3 +95,33 @@ class CakeShop(
   /// 其他幺蛾子
   ///
 }
+
+object CakeShop {
+  def build(implicit
+    baker: Baker,
+    decorator: Decorator,
+    candyMaker: CandyMaker,
+    scChef: SichuanChef,
+    hnChef: HunanChef,
+    cashier: Cashier,
+    waiter: Waiter,
+    washer: Washer,
+    logistic: Logistic,
+    security: Security,
+    accountant: Accountant,
+    manager: Manager
+  ): CakeShop = new CakeShop(
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly
+  )
+}

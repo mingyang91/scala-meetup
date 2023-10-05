@@ -8,3 +8,7 @@ class CandyMaker {
 
   def maskFruit(name: String) = Future.unit
 }
+
+object CandyMaker {
+  def build: CandyMaker = new CandyMaker
+}
