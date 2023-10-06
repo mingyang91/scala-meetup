@@ -1,4 +1,4 @@
-package meetup.di.simple
+package meetup.di.simple.sync
 
 import meetup.di.simple.sync.member._
 import meetup.di.simple.sync.utils.Demo

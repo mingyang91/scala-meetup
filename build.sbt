@@ -14,7 +14,7 @@ val runTimePkg = Seq(
 //  "com.typesafe.config.impl.ConfigImpl$SystemPropertiesHolder"
 ).mkString(",")
 
-Compile / mainClass := Some("meetup.compare.zio.request")
+// Compile / mainClass := Some("meetup.compare.zio.request")
 
 graalVMNativeImageOptions := Seq(
   "-H:IncludeResources=^([^.]+\\.(conf|csv|properties|sql|routes|xml))$",
