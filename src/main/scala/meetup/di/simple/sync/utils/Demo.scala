@@ -1,4 +1,4 @@
-package meetup.di.simple.utils
+package meetup.di.simple.sync.utils
 
 import akka.actor.ActorSystem
 import akka.pattern.after

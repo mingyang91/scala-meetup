@@ -1,7 +1,7 @@
-package meetup.di.simple.member
+package meetup.di.simple.sync.member
 
-import meetup.di.simple.tools.{Mixer, PipingTip, Turntable}
-import meetup.di.simple.utils.Demo
+import meetup.di.simple.sync.tools.{Mixer, PipingTip, Turntable}
+import meetup.di.simple.sync.utils.Demo
 
 class Decorator(mixer: Mixer, pipingTip: PipingTip, turntable: Turntable) extends Demo {
 

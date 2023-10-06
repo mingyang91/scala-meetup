@@ -1,6 +1,6 @@
 package meetup.di.simple
 
-import meetup.di.simple.member.{
+import meetup.di.simple.sync.member.{
   Accountant,
   Baker,
   CandyMaker,
@@ -14,8 +14,8 @@ import meetup.di.simple.member.{
   Waiter,
   Washer
 }
-import meetup.di.simple.tools.{Mixer, Oven, PipingTip, Turntable}
-import meetup.di.simple.utils.Demo
+import meetup.di.simple.sync.tools.{Mixer, Oven, PipingTip, Turntable}
+import meetup.di.simple.sync.utils.Demo
 
 object djx314 extends App with Demo {
   implicit val mixer: Mixer           = Mixer.build

@@ -1,6 +1,6 @@
-package meetup.di.simple.member
+package meetup.di.simple.sync.member
 
-import meetup.di.simple.utils.Demo
+import meetup.di.simple.sync.utils.Demo
 import org.slf4j.LoggerFactory
 
 class Cashier extends Demo {

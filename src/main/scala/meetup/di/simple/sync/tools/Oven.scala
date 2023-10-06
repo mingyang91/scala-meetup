@@ -1,6 +1,6 @@
-package meetup.di.simple.tools
+package meetup.di.simple.sync.tools
 
-import meetup.di.simple.utils.Demo
+import meetup.di.simple.sync.utils.Demo
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.Future

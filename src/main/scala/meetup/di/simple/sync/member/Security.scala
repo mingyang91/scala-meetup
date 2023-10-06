@@ -1,4 +1,4 @@
-package meetup.di.simple.member
+package meetup.di.simple.sync.member
 
 import org.slf4j.LoggerFactory
 

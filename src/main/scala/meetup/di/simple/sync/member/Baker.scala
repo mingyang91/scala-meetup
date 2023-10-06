@@ -1,7 +1,7 @@
-package meetup.di.simple.member
+package meetup.di.simple.sync.member
 
-import meetup.di.simple.tools._
-import meetup.di.simple.utils.Demo
+import meetup.di.simple.sync.tools._
+import meetup.di.simple.sync.utils.Demo
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.Future
