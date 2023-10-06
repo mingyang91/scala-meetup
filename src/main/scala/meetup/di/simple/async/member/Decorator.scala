@@ -6,7 +6,7 @@ import zio.{Has, ZIO}
 import zio.clock.Clock
 import zio.logging.Logging
 
-class Decorator extends Demo {
+class Decorator(pipingTip: PipingTip, turntable: Turntable, mixer: Mixer) extends Demo {
 
   def decorating(cake: String): ZIO[Logging with Clock with Has[PipingTip] with Has[Turntable] with Has[Mixer], Nothing, String] = {
     for {
@@ -23,5 +23,6 @@ class Decorator extends Demo {
 }
 
 object Decorator {
-  def build: Decorator = new Decorator
+  def build(implicit pipingTip: PipingTip, turntable: Turntable, mixer: Mixer): Decorator =
+    new Decorator(implicitly, implicitly, implicitly)
 }

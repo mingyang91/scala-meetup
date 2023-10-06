@@ -96,3 +96,33 @@ class CakeShop(
   ///
 
 }
+
+object CakeShop {
+  def build(implicit
+    cashier: Cashier,
+    waiter: Waiter,
+    washer: Washer,
+    logistic: Logistic,
+    security: Security,
+    accountant: Accountant,
+    manager: Manager,
+    baker: Baker,
+    decorator: Decorator,
+    candyMaker: CandyMaker,
+    sichuanChef: SichuanChef,
+    hunanChef: HunanChef
+  ): CakeShop = new CakeShop(
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly,
+    implicitly
+  )
+}
