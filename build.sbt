@@ -60,7 +60,6 @@ val ZioLoggingVersion = "0.3.2"
 
 libraryDependencies ++= Seq(
   "org.rogach"    %% "scallop"             % "3.4.0",
-  "org.slf4j"      % "slf4j-nop"           % "1.6.4",
   "dev.zio"       %% "zio"                 % ZioVersion,
   "dev.zio"       %% "zio-config"          % ZioConfigVersion,
   "dev.zio"       %% "zio-config-typesafe" % ZioConfigVersion,
