@@ -2,7 +2,7 @@ package meetup.compare.legacy
 
 import java.net.URI
 
-import akka.pattern.after
+import org.apache.pekko.pattern.after
 import meetup.di.legacy.utils.Demo
 
 import scala.concurrent.duration.DurationInt

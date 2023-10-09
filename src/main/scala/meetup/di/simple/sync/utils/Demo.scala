@@ -1,7 +1,7 @@
 package meetup.di.simple.sync.utils
 
-import akka.actor.ActorSystem
-import akka.pattern.after
+import org.apache.pekko.actor.ActorSystem
+import org.apache.pekko.pattern.after
 
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 import scala.concurrent.{ExecutionContextExecutor, Future}
