@@ -2,7 +2,7 @@ package meetup.compare.legacy
 
 import java.net.URI
 
-import akka.pattern.after
+import org.apache.pekko.pattern.after
 import meetup.di.legacy.utils.Demo
 
 import scala.concurrent.duration.DurationInt
@@ -26,21 +26,17 @@ object Compare extends App with Demo {
   }
   def getConnection: Future[Connection.type] = Future successful Connection
 
-  Connection.query("select name from user")
-    .map(rows => rows.distinct)
+  Connection.query("select name from user").map(rows => rows.distinct)
 
-  getConnection
-    .flatMap(_.query("SELECT * FROM table"))
+  getConnection.flatMap(_.query("SELECT * FROM table"))
 
   Connection.query("select * from user") zip Connection.query("select * from member")
 
-  Connection.query("select * from table")
-    .recoverWith { _ =>
-      Future.successful(Nil)
-    }
+  Connection.query("select * from table").recoverWith { _ =>
+    Future.successful(Nil)
+  }
 
-  def chain[T, R](list: List[T])
-                 (f: T => Future[R]): Future[List[R]] =
+  def chain[T, R](list: List[T])(f: T => Future[R]): Future[List[R]] =
     list match {
       case Nil => Future.successful(Nil)
       case head :: tail =>
@@ -71,7 +67,7 @@ object Compare extends App with Demo {
   val res = Await.result(race, 30.seconds)
   println("返回： " + res)
 
-  type User = String
+  type User  = String
   type Image = Array[Byte]
   val image = Array.empty[Byte]
 
@@ -80,20 +76,17 @@ object Compare extends App with Demo {
   def retrieveAvatar(user: User): Future[Option[Image]] = ???
 
   for {
-    user <- findUser("mingyang91")
+    user  <- findUser("mingyang91")
     image <- retrieveAvatar(user.get)
   } yield image
 
-  def login(token: String)
-        : Future[Either[String, User]] = ???
+  def login(token: String): Future[Either[String, User]] = ???
 
-  def upload(user: User,
-             image: Image)
-        : Future[Either[String, URI]] = ???
+  def upload(user: User, image: Image): Future[Either[String, URI]] = ???
 
   for {
     user <- login("a1b2c3")
-    url <- upload(user.getOrElse(""), image)
+    url  <- upload(user.getOrElse(""), image)
   } yield url
 
   def queryOrder() = delay(5.seconds).map(_ => "order info")

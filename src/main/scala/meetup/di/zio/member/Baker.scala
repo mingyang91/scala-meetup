@@ -11,9 +11,9 @@ object Baker extends Demo {
   def makeCakeBase(): ZIO[Logging with Clock with Has[Oven] with Has[Mixer], Nothing, String] = {
     for {
       mixer <- ZIO.service[Mixer]
-      oven <- ZIO.service[Oven]
-      _ <- Logging.info("开始制作蛋糕饼")
-      _ <- mixer.mixing("蛋清", "白糖", "面粉", "纯净水")
+      oven  <- ZIO.service[Oven]
+      _     <- Logging.info("开始制作蛋糕饼")
+      _     <- mixer.mixing("蛋清", "白糖", "面粉", "纯净水")
       _ = Logging.info("倒入模具")
       _ <- mixer.mixing("蛋黄", "白糖", "面粉", "纯净水")
       _ = Logging.info("倒入模具")

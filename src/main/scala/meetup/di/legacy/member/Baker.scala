@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory
 
 import scala.concurrent.Future
 
-class Baker(oven: Oven,
-            mixer: Mixer) extends Demo {
+class Baker(oven: Oven, mixer: Mixer) extends Demo {
   val logger = LoggerFactory.getLogger(this.getClass)
 
   def makeCakeBase(): Future[String] = {
